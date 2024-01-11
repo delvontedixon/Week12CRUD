@@ -46,3 +46,28 @@ class HouseService {
     });
   }
 }
+
+class DOMManager {
+  static houses;
+
+  static getAllHouses() {
+    HouseService.getAllHouses().then((houses) => this.render(houses));
+  }
+
+  static render(houses) {
+    this.houses = houses;
+    $("#app").empty();
+    for (let house of houses) {
+      $("#app").prepend(
+        `<div id="${house._id}" class="card">
+            <div class="card-header">
+                <h2>${house.name}</h2>
+            </div>
+        </div>
+        `
+      );
+    }
+  }
+}
+
+DOMManager.getAllHouses();
