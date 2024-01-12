@@ -17,7 +17,7 @@ class Room {
 }
 //Above are the two classes//
 class HouseService {
-  static url = "https://ancient-taiga-31359.herokupp.com/api/houses";
+  static url = "https://ancient-taiga-31359.herokuapp.com/api/houses";
 
   static getAllHouses() {
     return $.get(this.url);
