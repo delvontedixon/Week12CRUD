@@ -53,7 +53,7 @@ class DOMManager {
   static getAllHouses() {
     HouseService.getAllHouses().then((houses) => this.render(houses));
   }
-
+  //This makes the CREATE method//
   static createHouse(name) {
     HouseService.createHouse(new House(name))
       .then(() => {
@@ -61,7 +61,7 @@ class DOMManager {
       })
       .then((houses) => this.render(houses));
   }
-
+  //This makes the DELETE method//
   static deleteHouse(id) {
     HouseService.deleteHouse(id)
       .then(() => {
