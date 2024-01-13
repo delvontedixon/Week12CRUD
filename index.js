@@ -62,6 +62,19 @@ class DOMManager {
         `<div id="${house._id}" class="card">
             <div class="card-header">
                 <h2>${house.name}</h2>
+                <button class="btn btn-danger" onclick="DOMManager.deleteHouse('${house._id}')">Delete</button>
+            </div>
+            <div class="card-body">
+              <div class="card">
+                <div class="row">
+                  <div class="col-sm">
+                    <input type="text" id="${house._id}-room-name" class ="form-control" placeholder="Room Name">
+                  </div>
+                  <div class="col-sm">
+                    <input type="text" id="${house._id}-room-area" class ="form-control" placeholder="Room Area">
+                  </div>
+              </div> 
+              <button id="${house._id}-new-room" onclick="DOMManager.addRoom('${house._id}')" class="btn btn-primary form-control">Add</button>
             </div>
         </div>
         `
