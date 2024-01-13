@@ -69,6 +69,20 @@ class DOMManager {
       })
       .then((houses) => this.render(houses));
   }
+  
+  static addRoom(id) {
+    for (let house of this.houses) {
+      if (house._id == id) {
+        house.rooms.push(new Room($(`#${house._id}-room-name`).val(), $(`#${house._id}-room-area`).val()));
+        HouseService.updateHouse(house) 
+          .then(() => {
+            return HouseService.getAllHouses();
+          })
+          .then((houses) => this.render(houses));
+        }
+      }
+    }
+  }
 
   static render(houses) {
     this.houses = houses;
@@ -102,10 +116,10 @@ class DOMManager {
       }
     }
   }
-}
+
 
 $("#create-new-house").click(() => {
-  DOMManager.createHouse($("new-house-name").val());
+  DOMManager.createHouse($("#new-house-name").val());
   $("#new-house-name").val("");
 });
 
