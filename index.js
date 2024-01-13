@@ -54,7 +54,15 @@ class DOMManager {
     HouseService.getAllHouses().then((houses) => this.render(houses));
   }
 
-  static deleteHpuse(id) {
+  static createHouse(name) {
+    HouseService.createHouse(new House(name))
+      .then(() => {
+        return HouseService.getAllHouses();
+      })
+      .then((houses) => this.render(houses));
+  }
+
+  static deleteHouse(id) {
     HouseService.deleteHouse(id)
       .then(() => {
         return HouseService.getAllHouses();
@@ -95,5 +103,10 @@ class DOMManager {
     }
   }
 }
+
+$("#create-new-house").click(() => {
+  DOMManager.createHouse($("new-house-name").val());
+  $("#new-house-name").val("");
+});
 
 DOMManager.getAllHouses();
